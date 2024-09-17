@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+
+<style>
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    
+    html, body {
+        height: 100%;
+        width: 100%;
+    }
+    #main{
+        height: 100%;
+        width: 100%;
+        background-color: black;
+        color: white;
+    }
+
+    #nav{
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 20px;
+    }
+    #nav .part1 img{
+        height: 80px;
+        object-fit: cover;
+        object-position: center;
+        
+    }
+    #nav .part2{
+        width: 500px;
+        margin-left: 70px;
+
+    }
+    #nav h1{
+        background-color: rgba(128, 128, 128, 0.411);
+        padding: 10px;
+        border: 1px solid gray;
+        border-radius: 50px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+    #nav h1 input{
+        /* background-color: blue; */
+        padding: 10px;
+        width: 100%;
+        font-size: 22px;
+        border: none;
+        background-color: transparent;
+        outline: none;     
+        color: white;
+    }
+    #nav h1 input::placeholder{
+    color: white;
+    font-size: 18px;
+    }
+
+    #nav .part3{
+        padding: 10px;
+        /* background-color: blue; */
+        display: flex;
+        align-items: center;
+        /* flex-direction: column; */
+        gap: 10px;
+    }
+
+    #nav .part3 img{
+        height: 60px;
+        width: 60px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    #nav .part3 h2{
+        font-family: kinta;
+        font-size: 18px;
+    }
+
+    #centre{
+        height: calc(100% - 100px);
+        width: 100%;
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+    }
+    .playlist{
+        width: 30%;
+        height: 86%;
+        /* background-color: skyblue; */
+        border: 1px solid rgba(128, 128, 128, 0.503);
+        background-color: rgb(42, 40, 40);
+
+        border-radius: 20px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .showSongs{
+        width: 70%;
+        height: 86%;
+
+        /* background-color: rgb(161, 169, 173); */
+        background-color: rgb(42, 40, 40);
+        border-radius: 20px;
+        padding: 20px;
+        border: 1px solid rgba(128, 128, 128, 0.76);
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        overflow-y: auto;
+    }
+    .headings{
+        display: flex;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.339);
+    }
+    .headings h3{
+        font-size: 20px;
+        color: gray;    
+        opacity: .9;
+        
+        
+    }
+    .p1{
+        width: 50%;
+        display: flex;
+        align-items: center;
+        
+    }
+    .p2{
+        width: 40%;
+        display: flex;
+        align-items: center;
+        
+
+    }
+    .p3{
+        width: 10%;
+        display: flex;
+        align-items: center;
+        
+
+    }
+
+    .song{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        /* background-color: rgba(128, 128, 128, 0.39); */
+        height: 50px;
+        align-items: center;
+    }
+
+    .song .titlePart{
+        width: 50%;
+        display: flex;
+        gap: 30px;
+        /* background-color: royalblue; */
+        align-items: center;
+    }
+    .titlePart img{
+        height: 50px;
+        width: 50px;
+        object-fit: cover;
+        object-position: center;
+        cursor: pointer;
+    }
+    .title{
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .title h4{
+        font-size: 18px;
+        font-family: kinta;
+        cursor: pointer;
+    }
+    .title h5{
+        font-size: 16px;
+        font-family: gilroy;
+        opacity: 0.8;
+    }
+    .album{
+        width: 40%;
+        /* background-color: red; */
+    }
+    .album h5{
+        font-size: 18px;
+    }
+    .time{
+        width: 10%;
+        /* background-color: gainsboro; */
+    }
+    .time h6{
+        font-size: 16px;
+        cursor: pointer;
+    }
+    #playSection{
+        height: 100px;
+        width: 100%;
+        background-color: rgb(152, 141, 141);
+        position: absolute;
+        bottom: 0%;
+        border-radius: 20px;   
+        display: flex;
+        
+        align-items: center;
+        justify-content: center;
+    }
+    .playlistPop{
+        height: fit-content;
+        width: 130px;
+        /* background-color: wheat; */
+        display: flex;
+        flex-direction: column;
+        
+        margin-left: -30px;
+        background-color: #524e4e;
+        padding: 5px;
+        display: none;
+        position: relative;
+    }
+    .playlistPop h4{
+        font-size: 15px;
+        color: rgb(190, 186, 186);
+        background-color: transparent;
+        cursor: pointer;
+        line-height: 20px;
+    }
+    .playlistPop i{
+        
+        text-align: right;
+        font-size: 15px;
+        color: rgb(190, 186, 186);
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+
+</style>
+
+
+
+<body>
+
+<div id="main">
+
+<div id="nav">
+    <div class="part1">
+        <div class="log">
+            <img src="https://static.vecteezy.com/system/resources/previews/018/930/750/original/spotify-app-logo-spotify-icon-transparent-free-png.png" alt="">
+        </div>
+    </div>
+
+    <div class="part2">
+
+        <h1><i class="ri-search-2-line"></i> <input type="text" placeholder=" What do you want to play?"> </h1>
+
+    </div>
+
+    <div class="part3">
+        <img src="data:<%= user.profilePhoto.contentType %>;base64,<%= user.profilePhoto.data.toString('base64') %>" alt="Profile Image" />
+        <h2>HEllo,<%= user.name%></h2>
+    </div>
+</div>
+
+<div id="centre">
+
+<div class="playlist">
+    <h1>PlayList</h1>
+
+
+
+</div>
+
+<div class="showSongs">
+    <h1>Songs</h1>
+
+    <div class="headings">
+        <div class="p1">
+            <h3>Title</h3>
+        </div>
+        <div class="p2">
+            <h3>Album</h3>
+        </div>
+        <div class="p3">
+            <h3><i class="ri-time-line"></i></h3>
+        </div>
+    </div>
+
+    <div class="song">
+
+        <div class="titlePart">
+        <img src="https://tse3.mm.bing.net/th?id=OIF.B9K7%2fmZu7tbdjA3yFrLC6w&pid=Api&P=0&h=180" alt="">
+        <div class="title">
+            <h4>Tum se hi song</h4>
+            <h5>Sachin-jigar</h5>
+        </div>
+      </div>
+
+      <div class="album">
+        <h5>Teri bato me aisa uljha jiya</h5>
+      </div>
+
+      <div class="time">
+        <h6>Add to PlayList</h6>
+      </div>
+
+    </div>
+
+</div>
+
+</div>    
+
+<div id="playSection">
+    <audio src=""  controls style="display: none;"></audio>
+    
+</div>
+
+</div>
+
+
+</body>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
+
+<script>
+     
+     const user ='<%=user._id%>'
+     console.log(user);
+     
+
+
+
+    function showingAllSongs(){
+    
+    fetch('/song/showAllSongs')
+    .then(response => response.json())
+    .then(songs => {
+        songs.forEach(async function (songdata) {
+            document.querySelector('.showSongs').innerHTML += `
+                <div class="song" id="${songdata._id}">
+                    <div class="titlePart">
+                        <img onclick="playSong('${songdata._id}')" id="${songdata._id}" 
+                            src="https://tse3.mm.bing.net/th?id=OIF.B9K7%2fmZu7tbdjA3yFrLC6w&pid=Api&P=0&h=180" alt="">
+                        <div class="title" id="${songdata._id}">
+                            <h4 onclick="playSong('${songdata._id}')">${songdata.title}</h4>
+                            <h5>${songdata.singer}</h5>
+                        </div>
+                    </div>
+                    <div class="album">
+                        <h5>${songdata.album}</h5>
+                    </div>
+                    <div class="time">
+                          <div class="playlistPop">
+                           <i class="ri-close-large-line"></i>
+                            <h4> Add to PlayList</h4>
+                            <h4>Like</h4>
+
+        </div>
+                              <h6 id="${songdata._id}">Add to PlayList</h6>
+
+                    </div>
+                </div>`;
+        });
+    })
+    .catch(error => console.error('Error fetching songs:', error));
+    }
+    showingAllSongs();
+
+    
+    function playSong(songId){
+        fetch(`/song/${songId}`)
+            .then(response => {
+                return response.blob()
+            })
+            .then(blob => {
+                const audio = document.querySelector('#playSection audio')
+                const audioURL = URL.createObjectURL(blob);     
+                audio.src = audioURL;
+                audio.style.display = 'block';
+                audio.play().catch(error => {
+                console.log('Error playing the song:', error);
+            });
+            });
+    }
+
+     const socket = io();
+
+     document.querySelector('.showSongs').addEventListener('click',function(dets){
+       if(dets.target.tagName=='H6'){
+        socket.emit('songId',{songid:dets.target.id,userid:user});
+       } 
+     })
+
+     socket.on("updatedUser",function(songdata){
+        
+            document.querySelector('.playlist').innerHTML += `
+                <div class="song" id="${songdata._id}">
+                    <div class="titlePart">
+                        <img onclick="playSong('${songdata._id}')" id="${songdata._id}" 
+                            src="https://tse3.mm.bing.net/th?id=OIF.B9K7%2fmZu7tbdjA3yFrLC6w&pid=Api&P=0&h=180" alt="">
+                        <div class="title" id="${songdata._id}">
+                            <h4 onclick="playSong('${songdata._id}')">${songdata.title}</h4>
+                            <h5>${songdata.singer}</h5>
+                        </div>
+                    </div>
+                  
+                </div>`;
+        
+      });
+
+
+
+</script>
+</html>

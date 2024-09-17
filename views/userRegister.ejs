@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    
+    html, body {
+        height: 100%;
+        width: 100%;
+    }
+
+    #main{
+        height: 100%;
+        width: 100%;
+    }   
+    
+    form{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 400px;
+        background-color: wheat;
+        color: darkred;
+        padding: 30px;
+        height: fit-content;
+        border-radius: 30px;
+        box-shadow: 20px 20px 20px 80px rgba(145, 140, 140, 0.476);     
+        display: flex;
+        flex-direction: column;
+        gap: 30px;  
+    }
+    input{
+        padding: 20px;
+        border-radius: 20px;
+        font-size: 20px;
+        color: darkred;
+        width: 90%;
+        outline: none;
+        background-color: transparent;
+        border: 1px solid darkred;
+
+    }
+    label{
+        font-size: 19px;
+    }
+
+</style>
+<body>
+  
+    <div id="main">
+
+     <form action="/register" method="post" enctype="multipart/form-data">
+        <h1>Register Page</h1>
+
+        <input type="text" name="name" placeholder="Enter your name">
+        <input type="text" name="email" placeholder="Enter your Email">
+        <input type="number" name="phoneNumber" placeholder="Enter your Contact Number">
+        <input type="password" name="password" placeholder="Enter your password">
+        <label for="">Upload Profile</label> <input style="width: 100%;" type="file" name="profileImage">
+        <input type="submit" value="Submit">
+       
+     </form>
+
+
+    </div>
+    
+</body>
+</html>
